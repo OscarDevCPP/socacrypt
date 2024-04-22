@@ -38,6 +38,7 @@ body {
   transition: background-color 0.4s ease-in-out;
   color: var(--color-white);
   cursor: pointer;
+  width: 100%;
 }
 
 
@@ -65,7 +66,7 @@ body {
 }
 
 .panel-output__button-copy {
-  visibility: hidden;
+  display: none;
 }
 
 .panel-input {
@@ -104,6 +105,7 @@ body {
 
 .panel-output__text-area {
   color: var(--color-white);
+  display: none;
 }
 
 .panel-input__action-buttons {
@@ -130,6 +132,30 @@ body {
   grid-template-columns: 1fr;
 }
 
+.not-message-found {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  height: 100%;
+  width: 100%;
+  gap: 5px;
+}
+
+.not-message-found__img {
+  width: 50%;
+}
+
+.not-message-found__header {
+  font-size: 1.1rem;
+  ;
+  font-weight: 800;
+  color: var(--color-white);
+}
+
 
 /* breakpoints */
 
@@ -140,6 +166,20 @@ body {
 
   .panel-input__notifier {
     font-size: 1rem;
+  }
+
+  .not-message-found__header {
+    font-size: 1.5rem;
+  }
+
+  .not-message-found__img {
+    width: 48%;
+  }
+}
+
+@media screen and (min-height: 1280px) {
+  .not-message-found {
+    height: 42.5vh;
   }
 }
 
@@ -165,13 +205,22 @@ body {
   }
 
   .text-area {
-    height: 70vh;
+    height: 75vh;
     font-size: 2rem;
   }
 
   .panel-input__text-area {
     padding-top: 10%;
   }
+
+  .panel-input__action-buttons{
+    flex-direction: row;
+  }
+
+  .button{
+    padding: 1.2rem;
+  }
+  
 }
 
 @media screen and (min-width: 1440px) {
@@ -184,6 +233,6 @@ body {
   }
 
   .text-area {
-    height: 70vh;
+    height: 76vh;
   }
 }

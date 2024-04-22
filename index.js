@@ -13,9 +13,11 @@ function handleClickActionButton(callback){
   if (text.trim().length === 0)
     return
   const isValid = isValidInput(text);
+  $("#output-text").style.display = isValid ? "block" : "none";
+  $("#btn-copy").style.display = isValid ? "block" : "none";
   $("#output-text").value = isValid ? callback(text) : "";
   $("#info-text").style.color = isValid ? "" : "red";
-  $("#btn-copy").style.visibility = isValid ? "visible" : "hidden";
+  $("#not-message-found").style.display = isValid ? "none" : "flex";
 }
 
 function onClickCopyText() {
@@ -92,7 +94,7 @@ function containsMayus(text) {
 }
 
 function containsSpecialCharacters(text) {
-  return /[@#$%^&*()_+\-=[\]{}':"\\|<>/]/.test(text);
+  return /[@#$%^&*()_+\-=[\]{}':"\\|<>/]|[0-9]/.test(text);
 }
 
 function containsAccents(text) {

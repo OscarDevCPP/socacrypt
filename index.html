@@ -16,7 +16,8 @@
   <p class="header__icon">a</p>
   <main class="main">
     <section class="panel-input">
-      <textarea class="text-area panel-input__text-area" name="input-text" id="input-text" spellcheck="false"></textarea>
+      <textarea class="text-area panel-input__text-area" placeholder="Ingrese el texto aqui." name="input-text"
+        id="input-text" spellcheck="false"></textarea>
       <p class="panel-input__notifier" id="info-text">Solo letras minusculas y sin acentos.</p>
       <section class="panel-input__action-buttons">
         <button class="button button--info" onclick="onClickEncrypt()">Encriptar</button>
@@ -26,6 +27,11 @@
     <section class="panel-output">
       <textarea class="text-area panel-output__text-area" name="output-text" id="output-text" readonly></textarea>
       <button class="button panel-output__button-copy" id="btn-copy" onclick="onClickCopyText()">copiar</button>
+      <div class="not-message-found" id="not-message-found">
+        <img class="not-message-found__img" src="assets/doll.png" alt="Imagen de un niño con una lupa">
+        <p class="not-message-found__header">Ningún mensaje fue encontrado</p>
+        <p class="not-message-found__text">Ingresa el texto que deseas encriptar o desencriptar.</p>
+      </div>
     </section>
   </main>
   <footer class="footer"></footer>
