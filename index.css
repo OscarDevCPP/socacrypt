@@ -64,6 +64,10 @@ body {
   outline: 2px var(--color-accent) solid;
 }
 
+.panel-output__button-copy {
+  visibility: hidden;
+}
+
 .panel-input {
   justify-self: center;
   display: flex;
@@ -162,6 +166,7 @@ body {
 
   .text-area {
     height: 70vh;
+    font-size: 2rem;
   }
 
   .panel-input__text-area {

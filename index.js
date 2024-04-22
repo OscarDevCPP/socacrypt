@@ -1,32 +1,30 @@
 // ::::::::::::::  UI ::::::::::::::
 
 function onClickEncrypt() {
-  const text = document.getElementById("input-text").value;
-  if(text.length === 0) 
-    return
-  const isValid = isValidInput(text);
-  $("#output-text").value = isValid ? encrypt(text) : "";
-  $("#info-text").style.color = isValid ? "" : "red";
+  handleClickActionButton(encrypt);
 }
 
 function onClickDecrypt() {
-  const text = document.getElementById("input-text").value;
-  const isValid = isValidInput(text);
-  if(text.length == 0) 
-    return
-  $("#output-text").value = isValid ? decrypt(text) : "";
-  $("#info-text").style.color = isValid ? "" : "red";
+  handleClickActionButton(decrypt);
 }
 
+function handleClickActionButton(callback){
+  const text = document.getElementById("input-text").value;
+  if (text.trim().length === 0)
+    return
+  const isValid = isValidInput(text);
+  $("#output-text").value = isValid ? callback(text) : "";
+  $("#info-text").style.color = isValid ? "" : "red";
+  $("#btn-copy").style.visibility = isValid ? "visible" : "hidden";
+}
 
-function onClickCopyText(){
+function onClickCopyText() {
 
 }
 
 function $(selector) {
   return document.querySelector(selector);
 }
-
 
 // ::::::::::::::  DOMAIN ::::::::::::::
 
