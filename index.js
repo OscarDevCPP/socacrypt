@@ -8,7 +8,7 @@ function onClickDecrypt() {
   handleClickActionButton(decrypt);
 }
 
-function handleClickActionButton(callback){
+function handleClickActionButton(callback) {
   const text = document.getElementById("input-text").value;
   if (text.trim().length === 0)
     return
@@ -20,8 +20,19 @@ function handleClickActionButton(callback){
   $("#not-message-found").style.display = isValid ? "none" : "flex";
 }
 
-function onClickCopyText() {
-
+async function onClickCopyText() {
+  const textToCopy = document.getElementById("output-text").value
+  try {
+    await navigator.clipboard.writeText(textToCopy);
+  } catch (e) {
+    console.error(e);
+    var aux = document.createElement("textarea");
+    aux.innerHTML = textToCopy;
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+  }
 }
 
 function $(selector) {
