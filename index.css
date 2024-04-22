@@ -156,6 +156,37 @@ body {
   color: var(--color-white);
 }
 
+.rodapie{
+  position: absolute;
+  top: -50px;
+  right: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  background: gray;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  border-radius: 50%;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.rodapie__github{
+  width: 30px;
+  height: 30px;
+  background-image: url("assets/github.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.rodapie:hover{
+  background: var(--color-accent);
+  top: -40px;
+}
 
 /* breakpoints */
 
