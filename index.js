@@ -94,7 +94,7 @@ function containsMayus(text) {
 }
 
 function containsSpecialCharacters(text) {
-  return /[@#$%^&*()_+\-=[\]{};':"\\|,.<>/]/.test(text);
+  return /[@#$%^&*()_+\-=[\]{}':"\\|<>/]/.test(text);
 }
 
 function containsAccents(text) {
