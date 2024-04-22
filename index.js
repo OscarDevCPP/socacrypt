@@ -1,32 +1,43 @@
 // ::::::::::::::  UI ::::::::::::::
 
 function onClickEncrypt() {
-  const text = document.getElementById("input-text").value;
-  if(text.length === 0) 
-    return
-  const isValid = isValidInput(text);
-  $("#output-text").value = isValid ? encrypt(text) : "";
-  $("#info-text").style.color = isValid ? "" : "red";
+  handleClickActionButton(encrypt);
 }
 
 function onClickDecrypt() {
-  const text = document.getElementById("input-text").value;
-  const isValid = isValidInput(text);
-  if(text.length == 0) 
-    return
-  $("#output-text").value = isValid ? decrypt(text) : "";
-  $("#info-text").style.color = isValid ? "" : "red";
+  handleClickActionButton(decrypt);
 }
 
+function handleClickActionButton(callback) {
+  const text = document.getElementById("input-text").value;
+  if (text.trim().length === 0)
+    return
+  const isValid = isValidInput(text);
+  $("#output-text").style.display = isValid ? "block" : "none";
+  $("#btn-copy").style.display = isValid ? "block" : "none";
+  $("#output-text").value = isValid ? callback(text) : "";
+  $("#info-text").style.color = isValid ? "" : "red";
+  $("#not-message-found").style.display = isValid ? "none" : "flex";
+}
 
-function onClickCopyText(){
-
+async function onClickCopyText() {
+  const textToCopy = document.getElementById("output-text").value
+  try {
+    await navigator.clipboard.writeText(textToCopy);
+  } catch (e) {
+    console.error(e);
+    var aux = document.createElement("textarea");
+    aux.innerHTML = textToCopy;
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+  }
 }
 
 function $(selector) {
   return document.querySelector(selector);
 }
-
 
 // ::::::::::::::  DOMAIN ::::::::::::::
 
@@ -94,7 +105,7 @@ function containsMayus(text) {
 }
 
 function containsSpecialCharacters(text) {
-  return /[@#$%^&*()_+\-=[\]{};':"\\|,.<>/]/.test(text);
+  return /[@#$%^&*()_+\-=[\]{}':"\\|<>/]|[0-9]/.test(text);
 }
 
 function containsAccents(text) {
